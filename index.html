@@ -2,15 +2,75 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Static Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Offline-friendly wiki for multiple games built with vanilla JS and Web Components.">
+  <meta name="theme-color" content="#222222">
+  <meta name="application-name" content="JS Game Wiki">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="JS Game Wiki">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="color-scheme" content="light">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192.png">
+  <link rel="apple-touch-icon" href="/icons/icon-192.png">
+  <link rel="stylesheet" href="/styles.css">
+  <title>JS Game Wiki</title>
 </head>
 <body>
-  <header>
-    <h1>Welcome to the Static Page</h1>
-  </header>
-  <main>
-    <p>This is a completely static HTML page.</p>
-  </main>
+  <div class="app-shell">
+    <app-nav class="app-nav" id="appNav"></app-nav>
+
+    <main class="content">
+      <app-header id="appHeader"></app-header>
+
+      <div class="content-inner">
+        <section class="panel">
+          <p>Offline-friendly wiki scaffolding goes here. We’ll load per-game JSON, cache it for offline, and render via Web Components!</p>
+          <p>This page is prepped with PWA-friendly meta tags, manifest hook, and iOS-safe viewport settings!</p>
+        </section>
+      </div>
+    </main>
+  </div>
+  <noscript>This site requires JavaScript to load game data!</noscript>
+  <script type="module">
+    import "./scripts/app-nav.js";
+    import "./scripts/app-header.js";
+
+    const appNav = document.querySelector("#appNav");
+    const appHeader = document.querySelector("#appHeader");
+    const mqDesktop = window.matchMedia("(min-width: 900px)");
+
+    const attachMenu = () => {
+      const openBtn = appHeader?.menuButton;
+      openBtn?.addEventListener("click", () => appNav?.open());
+    };
+    attachMenu();
+
+    mqDesktop.addEventListener("change", (event) => {
+      if (event.matches) {
+        appNav?.resetDesktop();
+        const openBtn = appHeader?.menuButton;
+        openBtn?.setAttribute("aria-expanded", "false");
+      }
+    });
+
+    // Service worker toggle for dev/debug.
+    const ENABLE_SW = true;
+
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", async () => {
+        if (!ENABLE_SW) {
+          const regs = await navigator.serviceWorker.getRegistrations();
+          await Promise.all(regs.map((reg) => reg.unregister()));
+          return;
+        }
+        navigator.serviceWorker.register("/sw.js").catch((error) => {
+          console.error("Service worker registration failed:", error);
+        });
+      });
+    }
+  </script>
 </body>
 </html>

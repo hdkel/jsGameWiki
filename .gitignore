@@ -34,3 +34,5 @@ pnpm-debug.log*
 .env.local
 .env.*
 !.env.example
+# Cloudflare Wrangler
+.wrangler/

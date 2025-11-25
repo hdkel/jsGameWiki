@@ -1,0 +1,16 @@
+{
+  "name": "js-game-wiki",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler pages dev . --port 4173",
+    "start": "wrangler pages dev . --port 4173"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "wrangler": "^3.92.0"
+  }
+}
