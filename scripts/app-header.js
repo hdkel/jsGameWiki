@@ -51,6 +51,30 @@ class AppHeader extends HTMLElement {
           display: none;
         }
       }
+      .full-logo {
+        display: none;
+        align-items: center;
+        gap: 8px;
+        margin-right: 8px;
+      }
+      :host([data-show-logo-text]) .brand {
+        justify-content: flex-start;
+        display: flex;
+      }
+      :host([data-show-logo-text]) .brand__logo--mobile {
+        display: none;
+      }
+      :host([data-show-logo-text]) .full-logo {
+        display: inline-flex;
+      }
+      :host([data-show-logo-text]) .topbar__menu {
+        display: none;
+      }
+      @media (min-width: 900px) {
+        :host([data-show-logo-text]) .brand {
+          display: flex;
+        }
+      }
       .topbar__menu {
         display: none;
         width: 44px;
@@ -87,7 +111,10 @@ class AppHeader extends HTMLElement {
       <header class="topbar">
         <button class="icon-button topbar__menu" type="button" aria-label="Open menu">☰</button>
         <div class="brand" aria-label="Mulberries Game Wiki">
-          <app-logo class="brand__logo" size="42" alt=""></app-logo>
+          <span class="full-logo">
+            <app-logo size="42" alt="" show-text></app-logo>
+          </span>
+          <app-logo class="brand__logo brand__logo--mobile" size="42" alt=""></app-logo>
         </div>
         <app-indicator state="online"></app-indicator>
       </header>

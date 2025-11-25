@@ -23,6 +23,9 @@ class AppNav extends HTMLElement {
         position: relative;
         display: block;
       }
+      :host([hidden]) {
+        display: none !important;
+      }
       .sidebar__brand {
         display: flex;
         align-items: center;

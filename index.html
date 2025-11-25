@@ -3,74 +3,54 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="description" content="Offline-friendly wiki for multiple games built with vanilla JS and Web Components.">
-  <meta name="theme-color" content="#222222">
-  <meta name="application-name" content="JS Game Wiki">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="JS Game Wiki">
-  <meta name="format-detection" content="telephone=no">
-  <meta name="color-scheme" content="light">
-  <link rel="manifest" href="/manifest.webmanifest">
+  <meta name="description" content="Minimalist guides for games that respect your time.">
+  <meta name="color-scheme" content="dark">
   <link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-32.png">
   <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192.png">
-  <link rel="apple-touch-icon" href="/icons/icon-192.png">
   <link rel="stylesheet" href="/styles.css">
   <title>JS Game Wiki</title>
 </head>
 <body>
-  <div class="app-shell">
-    <app-nav class="app-nav" id="appNav"></app-nav>
-
+  <div class="app-shell" id="appShell">
     <main class="content">
-      <app-header id="appHeader"></app-header>
-
+      <app-header id="appHeader" data-show-logo-text></app-header>
       <div class="content-inner">
-        <section class="panel">
-          <p>Offline-friendly wiki scaffolding goes here. We’ll load per-game JSON, cache it for offline, and render via Web Components!</p>
-          <p>This page is prepped with PWA-friendly meta tags, manifest hook, and iOS-safe viewport settings!</p>
+        <section class="home-section">
+          <div class="home-hero">
+            <h1 class="home-hero__title">For games that respect your time</h1>
+            <p class="home-hero__subtitle">Mulberries' Game Wiki focuses on minimalist build guides for Duet Night Abyss, Sword of Convallaria and more - get straight to building your favorites.</p>
+          </div>
+          <div class="home-grid">
+            <article class="game-card" tabindex="0" role="link" aria-label="Open guide for Sword of Convallaria">
+              <img class="game-card__image" src="./icons/banner-sword-of-convallaria.jpg" alt="Sword of Convallaria banner">
+              <div class="game-card__content">
+                <h3 class="game-card__title">Sword of Convallaria</h3>
+              </div>
+            </article>
+            <article class="game-card" tabindex="0" role="link" aria-label="Open guide for Duet Night Abyss">
+              <img class="game-card__image" src="./icons/banner-duet-night-abyss.jpg" alt="Duet Night Abyss banner">
+              <div class="game-card__content">
+                <h3 class="game-card__title">Duet Night Abyss</h3>
+              </div>
+            </article>
+            <article class="game-card" tabindex="0" role="link" aria-label="Open guide for Wuthering Waves">
+              <img class="game-card__image" src="./icons/banner-wuthering-waves.jpg" alt="Wuthering Waves banner">
+              <div class="game-card__content">
+                <h3 class="game-card__title">Wuthering Waves</h3>
+              </div>
+            </article>
+          </div>
         </section>
       </div>
     </main>
+    <footer class="footer">
+      Copyright © 2025 mulberries.ca
+    </footer>
+
   </div>
   <noscript>This site requires JavaScript to load game data!</noscript>
   <script type="module">
-    import "./scripts/app-nav.js";
     import "./scripts/app-header.js";
-
-    const appNav = document.querySelector("#appNav");
-    const appHeader = document.querySelector("#appHeader");
-    const mqDesktop = window.matchMedia("(min-width: 900px)");
-
-    const attachMenu = () => {
-      const openBtn = appHeader?.menuButton;
-      openBtn?.addEventListener("click", () => appNav?.open());
-    };
-    attachMenu();
-
-    mqDesktop.addEventListener("change", (event) => {
-      if (event.matches) {
-        appNav?.resetDesktop();
-        const openBtn = appHeader?.menuButton;
-        openBtn?.setAttribute("aria-expanded", "false");
-      }
-    });
-
-    // Service worker toggle for dev/debug.
-    const ENABLE_SW = true;
-
-    if ("serviceWorker" in navigator) {
-      window.addEventListener("load", async () => {
-        if (!ENABLE_SW) {
-          const regs = await navigator.serviceWorker.getRegistrations();
-          await Promise.all(regs.map((reg) => reg.unregister()));
-          return;
-        }
-        navigator.serviceWorker.register("/sw.js").catch((error) => {
-          console.error("Service worker registration failed:", error);
-        });
-      });
-    }
   </script>
 </body>
 </html>

@@ -1,0 +1,32 @@
+{
+  "app_config": [
+    { "config_key": "selected_app", "config_value": null }
+  ],
+  "game_config": [
+    {
+      "id": "soc",
+      "name": "Sword of Convallaria",
+      "bannerImage": "/icons/banner-sword-of-convallaria.jpg",
+      "sections": [
+        { "id": "characters", "name": "Characters", "icon": "", "path": "/soc/characters" },
+        { "id": "weapons", "name": "Weapons", "icon": "", "path": "/soc/weapons" },
+        { "id": "tarots", "name": "Tarots", "icon": "", "path": "/soc/tarots" },
+        { "id": "tier-list", "name": "Tier List", "icon": "", "path": "/soc/tier-list" }
+      ],
+      "news": []
+    },
+    {
+      "id": "dna",
+      "name": "Duet Night Abyss",
+      "bannerImage": "/icons/banner-duet-night-abyss.webp",
+      "sections": [
+        { "id": "characters", "name": "Characters", "icon": "", "path": "/dna/characters" },
+        { "id": "weapons", "name": "Weapons", "icon": "", "path": "/dna/weapons" },
+        { "id": "demon-wedges", "name": "Demon Wedges", "icon": "", "path": "/dna/demon-wedges" },
+        { "id": "geniemons", "name": "Geniemons", "icon": "", "path": "/dna/geniemons" },
+        { "id": "tier-list", "name": "Tier List", "icon": "", "path": "/dna/tier-list" }
+      ],
+      "news": []
+    }
+  ]
+}
