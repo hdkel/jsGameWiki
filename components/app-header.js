@@ -23,7 +23,7 @@ class AppHeader extends HTMLElement {
         display: flex;
         align-items: center;
         gap: 12px;
-        padding: 8px;
+        padding: 8px 12px;
         background: #222222;
         color: #f5f5f5;
         position: sticky;
@@ -57,6 +57,13 @@ class AppHeader extends HTMLElement {
         gap: 8px;
         margin-right: 8px;
       }
+      .brand a {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: inherit;
+        text-decoration: none;
+      }
       :host([data-show-logo-text]) .brand {
         justify-content: flex-start;
         display: flex;
@@ -87,9 +94,9 @@ class AppHeader extends HTMLElement {
         border: 1px solid #2b2b2b;
         background: #202020;
         color: #e6e6e6;
-        padding: 8px 12px;
         border-radius: 8px;
         cursor: pointer;
+        font-size: 25px;
         transition: background 120ms ease, border-color 120ms ease;
       }
       .icon-button:hover {
@@ -112,9 +119,13 @@ class AppHeader extends HTMLElement {
         <button class="icon-button topbar__menu" type="button" aria-label="Open menu">☰</button>
         <div class="brand" aria-label="Mulberries Game Wiki">
           <span class="full-logo">
-            <app-logo size="42" alt="" show-text></app-logo>
+            <a href="/" aria-label="Mulberries Game Wiki home">
+              <app-logo size="42" alt="" show-text></app-logo>
+            </a>
           </span>
-          <app-logo class="brand__logo brand__logo--mobile" size="42" alt=""></app-logo>
+          <a href="/" aria-label="Mulberries Game Wiki home">
+            <app-logo class="brand__logo brand__logo--mobile" size="42" alt=""></app-logo>
+          </a>
         </div>
         <app-indicator state="online"></app-indicator>
       </header>

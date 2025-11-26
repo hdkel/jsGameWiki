@@ -31,13 +31,19 @@ class AppNav extends HTMLElement {
         align-items: center;
         gap: 10px;
       }
+      .sidebar__brand a {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        color: inherit;
+        text-decoration: none;
+      }
       .sidebar__brand app-logo {
         display: inline-flex;
       }
       .sidebar {
         background: var(--nav-bg, #222222);
         border-right: 1px solid var(--nav-border, #2b2b2b);
-        padding: 16px;
         display: flex;
         flex-direction: column;
         gap: 12px;
@@ -45,12 +51,15 @@ class AppNav extends HTMLElement {
         top: 0;
         min-height: 100vh;
         color: var(--nav-text, #f5f5f5);
+        width: min(75vw, 260px);
       }
       .sidebar__header {
         display: flex;
         align-items: center;
         justify-content: space-between;
         gap: 8px;
+        border-bottom: 1px solid #2b2b2b;
+        padding: 8px 12px;
       }
       .sidebar__title {
         font-weight: 600;
@@ -61,6 +70,8 @@ class AppNav extends HTMLElement {
       }
       .sidebar__close {
         display: none;
+        font-size: 20px;
+        line-height: 1;
       }
       .icon-button {
         border: 1px solid var(--button-border, #2b2b2b);
@@ -109,7 +120,9 @@ class AppNav extends HTMLElement {
       <nav class="sidebar" aria-label="Primary">
         <div class="sidebar__header">
           <div class="sidebar__brand">
-            <app-logo size="44" alt="" show-text></app-logo>
+            <a href="/" aria-label="Mulberries Game Wiki home">
+              <app-logo size="44" alt="" show-text></app-logo>
+            </a>
           </div>
           <button class="icon-button sidebar__close" type="button" aria-label="Close menu">✕</button>
         </div>

@@ -8,7 +8,8 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-32.png">
   <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192.png">
   <link rel="stylesheet" href="/styles.css">
-  <title>JS Game Wiki</title>
+  <link rel="stylesheet" href="/homepage.css">
+  <title>Mulberries' Game Guide</title>
 </head>
 <body>
   <div class="app-shell" id="appShell">
@@ -18,39 +19,37 @@
         <section class="home-section">
           <div class="home-hero">
             <h1 class="home-hero__title">For games that respect your time</h1>
-            <p class="home-hero__subtitle">Mulberries' Game Wiki focuses on minimalist build guides for Duet Night Abyss, Sword of Convallaria and more - get straight to building your favorites.</p>
+            <p class="home-hero__subtitle">Mulberries' Game Guide focuses on minimalist build guides for Duet Night Abyss, Sword of Convallaria and more - get straight to building your favorites.</p>
           </div>
           <div class="home-grid">
-            <article class="game-card" tabindex="0" role="link" aria-label="Open guide for Sword of Convallaria">
+            <a class="game-card" href="/soc" aria-label="Open guide for Sword of Convallaria">
               <img class="game-card__image" src="./icons/banner-sword-of-convallaria.jpg" alt="Sword of Convallaria banner">
               <div class="game-card__content">
                 <h3 class="game-card__title">Sword of Convallaria</h3>
               </div>
-            </article>
-            <article class="game-card" tabindex="0" role="link" aria-label="Open guide for Duet Night Abyss">
+            </a>
+            <a class="game-card" href="/dna" aria-label="Open guide for Duet Night Abyss">
               <img class="game-card__image" src="./icons/banner-duet-night-abyss.jpg" alt="Duet Night Abyss banner">
               <div class="game-card__content">
                 <h3 class="game-card__title">Duet Night Abyss</h3>
               </div>
-            </article>
-            <article class="game-card" tabindex="0" role="link" aria-label="Open guide for Wuthering Waves">
+            </a>
+            <a class="game-card" href="/wuwa" aria-label="Open guide for Wuthering Waves">
               <img class="game-card__image" src="./icons/banner-wuthering-waves.jpg" alt="Wuthering Waves banner">
               <div class="game-card__content">
                 <h3 class="game-card__title">Wuthering Waves</h3>
               </div>
-            </article>
+            </a>
           </div>
         </section>
       </div>
+      <app-footer></app-footer>
     </main>
-    <footer class="footer">
-      Copyright © 2025 mulberries.ca
-    </footer>
-
   </div>
   <noscript>This site requires JavaScript to load game data!</noscript>
   <script type="module">
-    import "./scripts/app-header.js";
+    import "./components/app-header.js";
+    import "./components/app-footer.js";
   </script>
 </body>
 </html>
